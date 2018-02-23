@@ -15,7 +15,7 @@ public class ConnectToCouch {
     private static final CloseableHttpClient httpClient = HttpClients.createDefault();
 
     public String getHttpResponse(String uri) throws IOException {
-        HttpGet httpget = new HttpGet(uri.replaceAll("\"","%22"));
+        HttpGet httpget = new HttpGet(uri);
         HttpResponse response  = httpClient.execute(httpget);
         JSONObject jsonObject = new JSONObject(EntityUtils.toString(response.getEntity()));
         JSONArray jsonArray = (JSONArray) jsonObject.get("rows");
